@@ -69,7 +69,7 @@ proxy_user="u9iy6"
 proxy_password="tdcg3sad"
 
 
-for idx,ip in enumerate(ips.split('\n')[:1]):
+for idx,ip in enumerate(ips.split('\n')):
     if ip:
         ip=ip.split(':')
         # print(ip)
