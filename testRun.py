@@ -73,6 +73,7 @@ for idx,ip in enumerate(ips.split('\n')[:1]):
     if ip:
         ip=ip.split(':')
         # print(ip)
-        print('docker run --privileged -itd -e PROXY_IP={} -e PROXY_PORT={} -e PROXY_USER={} -e PROXY_PASS={} --name earnapp_{} jee23/jeevan06:69'.format(ip[0],ip[1],ip[2],ip[3],idx+1))
+        # print('docker run --privileged -itd -e PROXY_IP={} -e PROXY_PORT={} -e PROXY_USER={} -e PROXY_PASS={} --name earnapp_{} jee23/jeevan06:69'.format(ip[0],ip[1],ip[2],ip[3],idx+1))
+        print('docker run --privileged -itd -e proxy_ip={} -e proxy_port={} -e proxy_user={} -e proxy_password={} --name earnapp_{} earnapp:vps'.format(ip[0],ip[1],ip[2],ip[3],idx+1))
 #docker run --privileged -itd -e proxy_ip={} -e proxy_port={} -e proxy_user={} -r proxy_password={} --name earnapp_testing earnapp:test
 

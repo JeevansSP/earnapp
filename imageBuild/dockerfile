@@ -1,8 +1,7 @@
 FROM ubuntu:20.04
 
 # Install necessary packages
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
     sudo \
     wget \
     redsocks \
@@ -14,8 +13,7 @@ RUN apt-get update && \
     dos2unix \
     iputils-ping \
     net-tools \
-    coreutils \
-    && rm -rf /var/lib/apt/lists/*
+    coreutils 
 
 # Copy application files into the container
 COPY ./src /app
