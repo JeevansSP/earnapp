@@ -54,20 +54,16 @@ iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDSOCKS
 
 
 
-# run earnapp
-# Install earnapp and start it
-# cp /app/earnapp.sh /tmp/earnapp.sh
-# Restart the redsocks service
+echo "Installing earnapp"
 
-# echo "running earnapp"
 
-# # wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
+wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
 
-# # echo "Installing earnapp"
 
-# # echo "yes" | bash /tmp/earnapp.sh 
+echo "running earnapp"
 
-earnapp start
+echo "yes" | bash /tmp/earnapp.sh 
+
 echo $(earnapp status)
 
 read $something
