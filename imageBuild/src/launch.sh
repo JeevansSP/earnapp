@@ -9,6 +9,7 @@ sed -i "s/\${proxy_port}/$PROXY_PORT/g" /etc/redsocks.conf
 sed -i "s/\${proxy_user}/$PROXY_USER/g" /etc/redsocks.conf
 sed -i "s/\${proxy_password}/$PROXY_PASSWORD/g" /etc/redsocks.conf
 
+redsocks -c /etc/redsocks.conf 
 
 
 # Mimic hostnamectl
@@ -54,7 +55,6 @@ iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDSOCKS
 # Install earnapp and start it
 # cp /app/earnapp.sh /tmp/earnapp.sh
 # Restart the redsocks service
-redsocks -c /etc/redsocks.conf 
 
 echo "running earnapp"
 
