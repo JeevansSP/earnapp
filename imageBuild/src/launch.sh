@@ -11,7 +11,6 @@ sed -i "s/\${proxy_port}/$proxy_port/g" /etc/redsocks.conf
 sed -i "s/\${proxy_user}/$proxy_user/g" /etc/redsocks.conf
 sed -i "s/\${proxy_password}/$proxy_password/g" /etc/redsocks.conf
 
-cat /etc/redsocks.conf
 
 redsocks -c /etc/redsocks.conf 
 
