@@ -10,7 +10,7 @@ sed -i "s/\${proxy_user}/$PROXY_USER/g" /etc/redsocks.conf
 sed -i "s/\${proxy_password}/$PROXY_PASSWORD/g" /etc/redsocks.conf
 
 redsocks -c /etc/redsocks.conf 
-
+cat /etc/redsocks.conf
 
 # Mimic hostnamectl
 echo "Mimicking hostnamectl"
