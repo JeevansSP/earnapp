@@ -21,6 +21,8 @@ COPY ./src /app
 # Set the working directory inside the container
 WORKDIR /app
 
+COPY /app/redsocks.conf /etc/redsocks.conf
+
 # Set environment variables
 ENV PROXY_IP=${proxy_ip} \
     PROXY_PORT=${proxy_port} \

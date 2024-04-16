@@ -10,7 +10,7 @@ sed -i "s/\${proxy_user}/$PROXY_USER/g" /etc/redsocks.conf
 sed -i "s/\${proxy_password}/$PROXY_PASSWORD/g" /etc/redsocks.conf
 
 redsocks -c /etc/redsocks.conf 
-cat /etc/redsocks.conf
+
 
 # Mimic hostnamectl
 echo "Mimicking hostnamectl"
@@ -50,7 +50,6 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDSOCKS
 iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDSOCKS
 
 
-curl 'https://api.ipify.org?format=json'
 
 # run earnapp
 # Install earnapp and start it
@@ -65,7 +64,7 @@ curl 'https://api.ipify.org?format=json'
 
 # # echo "yes" | bash /tmp/earnapp.sh 
 
-# earnapp start
-# echo $(earnapp status)
+earnapp start
+echo $(earnapp status)
 
 read $something
