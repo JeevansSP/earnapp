@@ -1,0 +1,45 @@
+FROM ubuntu:20.04
+
+# Install necessary packages
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    sudo \
+    wget \
+    redsocks \
+    iptables \
+    nano \
+    lsb-release \
+    curl \
+    uuid-runtime \
+    dos2unix \
+    iputils-ping \
+    net-tools \
+    coreutils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application files into the container
+COPY ./src /app
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Set environment variables
+ENV PROXY_IP=${proxy_ip} \
+    PROXY_PORT=${proxy_port} \
+    PROXY_USER=${proxy_user} \
+    PROXY_PASSWORD=${proxy_password}
+
+# Make setup script executable
+RUN chmod +x /app/install.sh && \
+    chmod +x /app/launch.sh
+
+# Install earnapp
+# RUN /app/install.sh
+
+# Run setup script with environment variables
+
+CMD ["/bin/bash", "-c", "/app/launch.sh"]
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=30s --start-period=30s --retries=2 \
+    CMD cat /etc/earnapp/status | grep enabled && exit 0 || exit 1
