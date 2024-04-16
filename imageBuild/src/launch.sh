@@ -6,10 +6,10 @@ rm /etc/redsocks.conf
 cp /app/redsocks.conf /etc/redsocks.conf
 # Perform replacements using sed
 echo $proxy_ip $proxy_port $proxy_user $proxy_password
-sed -i "s/\${proxy_ip}/$PROXY_IP/g" /etc/redsocks.conf
-sed -i "s/\${proxy_port}/$PROXY_PORT/g" /etc/redsocks.conf
-sed -i "s/\${proxy_user}/$PROXY_USER/g" /etc/redsocks.conf
-sed -i "s/\${proxy_password}/$PROXY_PASSWORD/g" /etc/redsocks.conf
+sed -i "s/\${proxy_ip}/$proxy_ip/g" /etc/redsocks.conf
+sed -i "s/\${proxy_port}/$proxy_port/g" /etc/redsocks.conf
+sed -i "s/\${proxy_user}/$proxy_user/g" /etc/redsocks.conf
+sed -i "s/\${proxy_password}/$proxy_password/g" /etc/redsocks.conf
 
 cat /etc/redsocks.conf
 
