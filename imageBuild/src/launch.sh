@@ -14,27 +14,7 @@ sed -i "s/\${proxy_password}/$PROXY_PASSWORD/g" /etc/redsocks.conf
 
 # Mimic hostnamectl
 echo "Mimicking hostnamectl"
-hostnamectl_content='#!/bin/bash
 
-# Get the hostname
-hostname=$(hostname)
-
-# Get the static hostname
-static_hostname=$(cat /etc/hostname 2>/dev/null)
-
-# Get the operating system
-operating_system=$(lsb_release -d -s 2>/dev/null)
-
-# Get the kernel version
-kernel_version=$(uname -r)
-
-# Print the information
-echo "Static hostname: $static_hostname"
-echo "Operating system: $operating_system"
-echo "Kernel version: $kernel_version"
-echo "Architecture: $(uname -m)"
-echo "Shell: $SHELL"
-'
 hostnamectl_content='#!/bin/bash
 echo $(uuidgen)
 '
@@ -74,14 +54,15 @@ iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDSOCKS
 # run earnapp
 # Install earnapp and start it
 # cp /app/earnapp.sh /tmp/earnapp.sh
-echo "Downloading earnapp"
+echo "running earnapp"
 
-wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
+# wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
 
-echo "Installing earnapp"
+# echo "Installing earnapp"
 
-echo "yes" | bash /tmp/earnapp.sh 
+# echo "yes" | bash /tmp/earnapp.sh 
 
+earnapp start
 echo $(earnapp status)
 
 read $something
