@@ -32,7 +32,7 @@ RUN chmod +x /app/install.sh && \
     chmod +x /app/launch.sh
 
 # Install earnapp
-# RUN /app/install.sh
+RUN /app/install.sh
 
 # Run setup script with environment variables
 
